@@ -25,6 +25,11 @@ public class PlayerMovement : MonoBehaviour {
             if(Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
+                GameObject hitObj = hit.collider.gameObject;
+                if (hitObj.tag.Equals("Interactable"))
+                {
+                    hitObj.interact();
+                }
             }
         }
 
