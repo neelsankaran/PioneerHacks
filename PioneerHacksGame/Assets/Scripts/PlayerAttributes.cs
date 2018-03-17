@@ -44,4 +44,9 @@ public class PlayerAttributes : MonoBehaviour {
         this.enabled = false;
         gameOverText.gameObject.SetActive(true);
     }
+
+    public void addItem(GameObject obj)
+    {
+
+    }
 }
