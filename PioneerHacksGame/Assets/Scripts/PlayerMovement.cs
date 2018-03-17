@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour {
                 destination.transform.position = emmitPos;
                 currentParticleSystem = GameObject.Instantiate(destination);
                 mouseDown = true;
+                GameObject hitObj = hit.collider.gameObject;
+                if (hitObj.tag.Equals("Interactable"))
+                {
+                    hitObj.interact();
+                }
             }
         }
 
