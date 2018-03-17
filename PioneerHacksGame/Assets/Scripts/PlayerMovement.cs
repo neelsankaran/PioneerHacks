@@ -30,7 +30,10 @@ public class PlayerMovement : MonoBehaviour {
 
             if(Physics.Raycast(ray, out hit) && mouseDown == false)
             {
-                GameObject.Destroy(currentParticleSystem);
+                if (currentParticleSystem != null)
+                {
+                    GameObject.Destroy(currentParticleSystem.gameObject);
+                }
                 agent.SetDestination(hit.point);
                 emmitPos = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 destination.transform.position = emmitPos;
