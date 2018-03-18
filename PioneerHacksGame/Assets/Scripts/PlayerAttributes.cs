@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class PlayerAttributes : MonoBehaviour {
     private float fuel = 10;
     private float nextUpdate = 1;
+    private float scrap = 0;
+    public ParticleSystem burner;
 
     public Text scoreText;
     public Text gameOverText;
+    public Text numCollected;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +31,7 @@ public class PlayerAttributes : MonoBehaviour {
             {
                 gameOver();
             }
+
         }
         scoreText.text = "Fuel: " + fuel;
     }
@@ -41,7 +45,27 @@ public class PlayerAttributes : MonoBehaviour {
     {
         gameOverText.text = "Fuel Depleted";
         gameObject.GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Destroy(burner.gameObject);
         this.enabled = false;
         gameOverText.gameObject.SetActive(true);
+    }
+
+    public void gameWin()
+    {
+        gameOverText.text = "All Scrap Collected";
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Destroy(burner.gameObject);
+        this.enabled = false;
+        gameOverText.gameObject.SetActive(true);
+    }
+
+    public void addScrap()
+    {
+        scrap++;
+        numCollected.text = "Scrap collected: " + scrap + "/3";
+        if (scrap == 3)
+        {
+            gameWin();
+        }
     }
 }
