@@ -7,16 +7,19 @@ public class PlayerAttributes : MonoBehaviour {
     private float fuel = 10;
     private float nextUpdate = 1;
     private float scrap = 0;
-    public ParticleSystem burner;
 
+
+    public ParticleSystem burner;
     public Text scoreText;
     public Text gameOverText;
     public Text numCollected;
+    public Button quitButton;
 
 	// Use this for initialization
 	void Start () {
         gameOverText.gameObject.SetActive(false);
-	}
+        quitButton.gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,6 +51,7 @@ public class PlayerAttributes : MonoBehaviour {
         GameObject.Destroy(burner.gameObject);
         this.enabled = false;
         gameOverText.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
 
     public void gameWin()
@@ -57,6 +61,7 @@ public class PlayerAttributes : MonoBehaviour {
         GameObject.Destroy(burner.gameObject);
         this.enabled = false;
         gameOverText.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
 
     public void addScrap()
